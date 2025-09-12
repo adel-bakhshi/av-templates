@@ -1,6 +1,9 @@
-import { TemplateType } from "./template-type";
+import { TemplateType } from "../enums/template-type";
 
-type ChangeNamespaceType = {
+/**
+ * Changes the namespace of the given file.
+ */
+interface ChangeNamespaceArgs {
   templateType: TemplateType;
   createPath: string;
   projectPath: string;
@@ -9,6 +12,6 @@ type ChangeNamespaceType = {
   frontendModifiedEndContent: string;
   backendModifiedStartContent: string;
   backendModifiedEndContent: string;
-};
+}
 
-export { ChangeNamespaceType };
+export { ChangeNamespaceArgs };

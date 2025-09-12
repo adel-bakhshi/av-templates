@@ -1,3 +1,6 @@
+/**
+ * Template type for creating templates.
+ */
 enum TemplateType {
   Window = 0,
   UserControl,

@@ -1,6 +1,9 @@
-import { TemplateType } from "./template-type";
+import { TemplateType } from "../enums/template-type";
 
-type ChangeFileContentType = {
+/**
+ * Change file content options.
+ */
+interface ChangeFileContentArgs {
   filePath: string;
   startContent: string;
   endContent: string;
@@ -9,6 +12,6 @@ type ChangeFileContentType = {
   csharpNameSpace: string;
   openFile: boolean;
   isCSharpFile: boolean;
-};
+}
 
-export { ChangeFileContentType };
+export { ChangeFileContentArgs };
