@@ -47,11 +47,11 @@ Perfect for developers building cross-platform desktop apps with Avalonia UI in 
 
 ### ➤ Creating a `Window`
 
-![Create Window](assets/create-window.gif)
+![Create Window](https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/raw/master/assets/create-window.gif)
 
 ### ➤ Creating an `UserControl`
 
-![Create UserControl](assets/create-usercontrol.gif)
+![Create UserControl](https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/raw/master/assets/create-usercontrol.gif)
 
 ---
 
