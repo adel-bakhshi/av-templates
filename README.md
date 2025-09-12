@@ -183,7 +183,7 @@ This project is licensed under the **AGPL-3.0-only** license — see [LICENSE](L
 ---
 
 <p align="center">
-  <img src="https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/blob/master/assets/icon.png?raw=true" width="120" alt="Avalonia Templates Logo" />
+  <img src="https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/raw/master/assets/icon.png" width="120" alt="Avalonia Templates Logo" />
   <br/>
   <em>Made with ❤️ for Avalonia Developers</em>
 </p>
