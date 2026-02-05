@@ -1,14 +1,16 @@
-# 🎯 Avalonia Templates for VS Code
+# 🎯 Templates for Avalonia UI - Visual Studio Code Extension
 
 > **Generate fully-structured Avalonia UI components with one click. No more boilerplate. Just clean, scalable code.**
 
-![Avalonia UI Templates](https://img.shields.io/badge/Avalonia_UI-Templates-512BD4?style=for-the-badge&logo=avalonia&logoColor=white)
+![Templates for Avalonia UI](https://img.shields.io/badge/Templates_for-Avalonia_UI-512BD4?style=for-the-badge&logo=avalonia&logoColor=white)
 ![VS Code Extension](https://img.shields.io/badge/VS_Code-Extension-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![License](https://img.shields.io/badge/License-AGPL_3.0-512BD4?style=for-the-badge)
 
-A powerful VS Code extension that automates the creation of **Avalonia UI** components — including `Window`, `UserControl`, `TemplatedControl`, `Styles`, and `ResourceDictionary` — with **proper namespace handling**, **directory structure**, **automatic using statements**, and **real-time logging**.
+A community-built VS Code extension that helps automate the creation of **Avalonia UI** components — including `Window`, `UserControl`, `TemplatedControl`, `Styles`, and `ResourceDictionary` — with **proper namespace handling**, **directory structure**, **automatic using statements**, and **real-time logging**.
 
 Perfect for developers building cross-platform desktop apps with Avalonia UI in C# and XAML.
+
+**`⚠️ Disclaimer: This is an independent, community-driven extension. It is not an official product of, affiliated with, or endorsed by Avalonia UI OÜ.`**
 
 ---
 
@@ -47,21 +49,21 @@ Perfect for developers building cross-platform desktop apps with Avalonia UI in 
 
 ### ➤ Creating a `Window`
 
-![Create Window](https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/raw/master/assets/create-window.gif)
+![Create Window](https://github.com/adel-bakhshi/av-templates/raw/master/assets/create-window.gif)
 
 ### ➤ Creating an `UserControl`
 
-![Create UserControl](https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/raw/master/assets/create-usercontrol.gif)
+![Create UserControl](https://github.com/adel-bakhshi/av-templates/raw/master/assets/create-usercontrol.gif)
 
 ---
 
 ## ⚙️ Configuration
 
-Customize logging behavior via VS Code settings:
+Controls the logging level for this extension:
 
 ```json
 {
-  "avaloniaTemplates.logLevel": "info"
+  "avt.logLevel": "info"
 }
 ```
 
@@ -81,7 +83,7 @@ Available levels:
 
 1. Open VS Code.
 2. Go to **Extensions** (`Ctrl+Shift+X`).
-3. Search for **“Avalonia Templates”** by **ADdy2142**.
+3. Search for **“Templates for Avalonia UI”** by **ADdy2142**.
 4. Click **Install**.
 
 ✅ **Requirements**:
@@ -171,7 +173,7 @@ See full details in [CHANGELOG.md](CHANGELOG.md)
 
 Found a bug? Have a feature request?
 
-👉 [Open an Issue on GitHub](https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/issues)  
+👉 [Open an Issue on GitHub](https://github.com/adel-bakhshi/av-templates/issues)  
 👨‍💻 Pull requests are welcome!
 
 ---
@@ -182,8 +184,4 @@ This project is licensed under the **AGPL-3.0-only** license — see [LICENSE](L
 
 ---
 
-<p align="center">
-  <img src="https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/raw/master/assets/icon.png" width="120" alt="Avalonia Templates Logo" />
-  <br/>
-  <em>Made with ❤️ for Avalonia Developers</em>
-</p>
+Made with ❤️ for Avalonia Developers
