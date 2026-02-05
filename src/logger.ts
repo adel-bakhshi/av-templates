@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { AppLogLevel } from "./enums/app-log-level";
+import constants from "./constants";
 
 /**
  * Singleton logger class for the extension
@@ -10,7 +11,7 @@ export class Logger {
   private logLevel: AppLogLevel;
 
   private constructor() {
-    this.outputChannel = vscode.window.createOutputChannel("Avalonia Templates");
+    this.outputChannel = vscode.window.createOutputChannel(constants.EXTENSION_NAME);
     this.logLevel = this.getLogLevelFromConfig();
 
     // Listen for configuration changes

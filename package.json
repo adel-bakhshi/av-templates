@@ -1,8 +1,8 @@
 {
-  "name": "avalonia-templates",
-  "displayName": "Avalonia Templates",
-  "description": "Avalonia UI Templates for Visual Studio Code",
-  "version": "2.0.1",
+  "name": "av-templates",
+  "displayName": "Templates for Avalonia UI",
+  "description": "An unofficial Visual Studio Code extension to quickly create Avalonia UI project files (Windows, UserControls, Styles, etc.) through context menus or commands.",
+  "version": "3.0.0",
   "icon": "./assets/icon.png",
   "publisher": "ADdy2142",
   "license": "AGPL-3.0-only",
@@ -13,17 +13,25 @@
     "Other"
   ],
   "keywords": [
-    "Avalonia",
-    "Avalonia UI",
-    "Avalonia Templates",
-    "Avalonia UI Templates"
+    "avalonia",
+    "avaloniaui",
+    "avalonia-ui",
+    "avalonia ui",
+    "templates",
+    "file-templates",
+    "scaffolding",
+    "window",
+    "usercontrol",
+    "styles",
+    "templatedcontrol",
+    "resourcedictionary"
   ],
   "bugs": {
-    "url": "https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion/issues"
+    "url": "https://github.com/adel-bakhshi/av-templates/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adel-bakhshi/Avalonia-Templates-VS-Extenion"
+    "url": "https://github.com/adel-bakhshi/av-templates"
   },
   "activationEvents": [
     "workspaceContains:**/*.axaml",
@@ -33,67 +41,67 @@
   "contributes": {
     "commands": [
       {
-        "command": "avalonia-templates.createWindow",
+        "command": "av-templates.createWindow",
         "title": "Window",
-        "category": "Avalonia UI Template"
+        "category": "AV Template"
       },
       {
-        "command": "avalonia-templates.createUserControl",
+        "command": "av-templates.createUserControl",
         "title": "UserControl",
-        "category": "Avalonia UI Template"
+        "category": "AV Template"
       },
       {
-        "command": "avalonia-templates.createTemplatedControl",
+        "command": "av-templates.createTemplatedControl",
         "title": "TemplatedControl",
-        "category": "Avalonia UI Template"
+        "category": "AV Template"
       },
       {
-        "command": "avalonia-templates.createStyles",
+        "command": "av-templates.createStyles",
         "title": "Styles",
-        "category": "Avalonia UI Template"
+        "category": "AV Template"
       },
       {
-        "command": "avalonia-templates.createResourceDictionary",
+        "command": "av-templates.createResourceDictionary",
         "title": "ResourceDictionary",
-        "category": "Avalonia UI Template"
+        "category": "AV Template"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "submenu": "avalonia-templates.submenu",
+          "submenu": "av-templates.submenu",
           "group": "navigation"
         }
       ],
-      "avalonia-templates.submenu": [
+      "av-templates.submenu": [
         {
-          "command": "avalonia-templates.createWindow"
+          "command": "av-templates.createWindow"
         },
         {
-          "command": "avalonia-templates.createUserControl"
+          "command": "av-templates.createUserControl"
         },
         {
-          "command": "avalonia-templates.createTemplatedControl"
+          "command": "av-templates.createTemplatedControl"
         },
         {
-          "command": "avalonia-templates.createStyles"
+          "command": "av-templates.createStyles"
         },
         {
-          "command": "avalonia-templates.createResourceDictionary"
+          "command": "av-templates.createResourceDictionary"
         }
       ]
     },
     "submenus": [
       {
-        "id": "avalonia-templates.submenu",
-        "label": "New Avalonia Template",
+        "id": "av-templates.submenu",
+        "label": "Add new template",
         "icon": "./assets/icon.png"
       }
     ],
     "configuration": {
-      "title": "Avalonia Templates",
+      "title": "AV Templates Settings",
       "properties": {
-        "avaloniaTemplates.logLevel": {
+        "avt.logLevel": {
           "type": "string",
           "default": "info",
           "enum": [
@@ -110,7 +118,7 @@
             "Show errors only",
             "Disable all logging"
           ],
-          "description": "Controls the logging level for the Avalonia Templates extension"
+          "description": "Controls the logging level for the extension."
         }
       }
     }

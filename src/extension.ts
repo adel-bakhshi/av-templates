@@ -8,33 +8,35 @@ import { ChangeFileContentArgs } from "./types/change-file-content-args";
 import { TemplateConfig } from "./types/template-config";
 import { ChangeNamespaceArgs } from "./types/change-namespace-args";
 import { Logger, log } from "./logger";
+import constants from "./constants";
 
 /**
- * Activates the Avalonia Templates extension
+ * Activates the extension
  * @param context - The extension context provided by VSCode
  */
 export function activate(context: vscode.ExtensionContext) {
-  log.info("Avalonia Templates extension activated");
+  log.info(`'${constants.EXTENSION_NAME}' extension activated`);
+  log.debug(`Hello from '${constants.EXTENSION_NAME}' ✋`);
 
   // Register all template creation commands
   const commands = [
-    vscode.commands.registerCommand("avalonia-templates.createWindow", (args: any) => {
+    vscode.commands.registerCommand("av-templates.createWindow", (args: any) => {
       log.debug("createWindow command triggered", { fsPath: args?.fsPath });
       createTemplate({ templateType: TemplateType.Window, fsPath: args?.fsPath });
     }),
-    vscode.commands.registerCommand("avalonia-templates.createUserControl", (args: any) => {
+    vscode.commands.registerCommand("av-templates.createUserControl", (args: any) => {
       log.debug("createUserControl command triggered", { fsPath: args?.fsPath });
       createTemplate({ templateType: TemplateType.UserControl, fsPath: args?.fsPath });
     }),
-    vscode.commands.registerCommand("avalonia-templates.createTemplatedControl", (args: any) => {
+    vscode.commands.registerCommand("av-templates.createTemplatedControl", (args: any) => {
       log.debug("createTemplatedControl command triggered", { fsPath: args?.fsPath });
       createTemplate({ templateType: TemplateType.TemplatedControl, fsPath: args?.fsPath });
     }),
-    vscode.commands.registerCommand("avalonia-templates.createStyles", (args: any) => {
+    vscode.commands.registerCommand("av-templates.createStyles", (args: any) => {
       log.debug("createStyles command triggered", { fsPath: args?.fsPath });
       createTemplate({ templateType: TemplateType.Styles, fsPath: args?.fsPath });
     }),
-    vscode.commands.registerCommand("avalonia-templates.createResourceDictionary", (args: any) => {
+    vscode.commands.registerCommand("av-templates.createResourceDictionary", (args: any) => {
       log.debug("createResourceDictionary command triggered", { fsPath: args?.fsPath });
       createTemplate({ templateType: TemplateType.ResourceDictionary, fsPath: args?.fsPath });
     }),
@@ -48,11 +50,11 @@ export function activate(context: vscode.ExtensionContext) {
  * Deactivates the extension (cleanup if needed)
  */
 export function deactivate() {
-  log.info("Avalonia Templates extension deactivated");
+  log.info(`'${constants.EXTENSION_NAME}' extension deactivated`);
 }
 
 /**
- * Creates an Avalonia template based on user selection
+ * Creates a template based on user selection
  * @param args - Configuration for template creation
  */
 async function createTemplate(args: CreateTemplateOptions) {
@@ -162,11 +164,11 @@ async function executeTemplateCreation(params: {
     {
       location: vscode.ProgressLocation.Notification,
       cancellable: false,
-      title: "Avalonia UI Templates",
+      title: "Create Template",
     },
     async (progress) => {
       try {
-        progress.report({ message: "Creating template..." });
+        progress.report({ message: `Creating new ${templateConfig.typeName}...` });
         log.info("Starting template creation process", { templateType, fileName, createPath });
 
         // Execute dotnet template command
@@ -179,8 +181,16 @@ async function executeTemplateCreation(params: {
           log.info("Template created successfully without --force");
         } catch (error) {
           // Handle the error if the project is not restored
-          if (error instanceof Error && error.message.includes("is not restored")) {
-            log.warn("Project not restored, using --force option", { error: error.message });
+          if (
+            error instanceof Error &&
+            (error.message.includes("is not restored") || error.message.includes("constraints are not met"))
+          ) {
+            if (error.message.includes("is not restored")) {
+              log.warn("Project not restored, using --force option", { error: error.message });
+            } else if (error.message.includes("constraints are not met")) {
+              log.warn("Project constraints not met, using --force", { error: error.message });
+            }
+
             progress.report({ message: "Project not restored, using --force option..." });
             const forceCommand = `${command} --force`;
             childProcess.execSync(forceCommand, { cwd: createPath });
@@ -214,7 +224,7 @@ async function executeTemplateCreation(params: {
         log.error("Error in template creation process", error as Error, params);
         handleCreationError(error);
       }
-    }
+    },
   );
 }
 
@@ -225,7 +235,7 @@ async function updateTemplateNamespaces(
   templateType: TemplateType,
   createPath: string,
   projectPath: string,
-  fileName: string
+  fileName: string,
 ) {
   log.debug("Updating template namespaces", { templateType, createPath, fileName });
 
@@ -252,7 +262,7 @@ function handleCreationError(error: unknown) {
 
   if (error instanceof Error) {
     if (error.message.includes("Solution or project file not found")) {
-      errorMessage = "No solution or project file found in workspace. Please open an Avalonia project.";
+      errorMessage = "No solution or project file found in workspace. Please open an Avalonia UI project.";
     } else if (error.message.includes("Namespace not found")) {
       errorMessage = "Could not determine namespace. Please make sure you're working in a valid project structure.";
     } else {
@@ -361,7 +371,7 @@ function constructNamespace(
   solutionDir: string,
   fileName: string,
   isSolutionDir: boolean,
-  projectName: string
+  projectName: string,
 ): string {
   const relativePath = path.relative(solutionDir, createPath);
   let namespace = relativePath
@@ -502,7 +512,7 @@ async function promptForViewModelCreation(templateType: string): Promise<boolean
   const userOption = await vscode.window.showInformationMessage(
     `Would you like to create a ViewModel for your ${templateType} as well?`,
     "Yes",
-    "No"
+    "No",
   );
 
   const result = userOption === "Yes";
@@ -518,7 +528,7 @@ async function createViewModel(
   viewName: string,
   projectPath: string,
   templateType: TemplateType,
-  progress: vscode.Progress<{ message: string; increment?: number }>
+  progress: vscode.Progress<{ message: string; increment?: number }>,
 ) {
   log.info("Creating ViewModel", { viewPath, viewName });
   progress.report({ message: "Creating ViewModel..." });
@@ -561,8 +571,16 @@ async function createViewModel(
     log.info("ViewModel created successfully without --force");
   } catch (error) {
     // Handle the error if the project is not restored
-    if (error instanceof Error && error.message.includes("is not restored")) {
-      log.warn("Project not restored for ViewModel, using --force option", { error: error.message });
+    if (
+      error instanceof Error &&
+      (error.message.includes("is not restored") || error.message.includes("constraints are not met"))
+    ) {
+      if (error.message.includes("is not restored")) {
+        log.warn("Project not restored for ViewModel, using --force option", { error: error.message });
+      } else if (error.message.includes("constraints are not met")) {
+        log.warn("Project constraints not met, using --force", { error: error.message });
+      }
+
       progress.report({ message: "Project not restored, using --force option..." });
       const forceCommand = `${command} --force`;
       childProcess.execSync(forceCommand, { cwd: directoryPath });
@@ -601,7 +619,7 @@ async function createViewModel(
 function inheritFromViewModelBaseIfExists(
   viewModelFilePath: string,
   viewModelFileName: string,
-  viewModelsPath: string
+  viewModelsPath: string,
 ) {
   log.debug("Checking for ViewModelBase inheritance", { viewModelFilePath, viewModelsPath });
 
