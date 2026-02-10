@@ -2,7 +2,7 @@
   "name": "av-templates",
   "displayName": "Templates for Avalonia UI",
   "description": "An unofficial Visual Studio Code extension to quickly create Avalonia UI project files (Windows, UserControls, Styles, etc.) through context menus or commands.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "icon": "./assets/icon.png",
   "publisher": "adel-bakhshi",
   "license": "AGPL-3.0-only",

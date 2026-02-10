@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.1 - 2026-02-10
+
+### Documentation
+
+- **Updated publisher name** in README.md from "ADdy2142" to **"Adel Bakhshi"**
+
 ## Version 3.0.0 - 2026-02-10
 
 ### Compliance & Branding
