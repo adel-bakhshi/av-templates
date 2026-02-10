@@ -4,7 +4,7 @@
   "description": "An unofficial Visual Studio Code extension to quickly create Avalonia UI project files (Windows, UserControls, Styles, etc.) through context menus or commands.",
   "version": "3.0.0",
   "icon": "./assets/icon.png",
-  "publisher": "ADdy2142",
+  "publisher": "adel-bakhshi",
   "license": "AGPL-3.0-only",
   "engines": {
     "vscode": "^1.91.0"
@@ -24,7 +24,8 @@
     "usercontrol",
     "styles",
     "templatedcontrol",
-    "resourcedictionary"
+    "resourcedictionary",
+    "axaml"
   ],
   "bugs": {
     "url": "https://github.com/adel-bakhshi/av-templates/issues"
