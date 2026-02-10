@@ -83,7 +83,7 @@ Available levels:
 
 1. Open VS Code.
 2. Go to **Extensions** (`Ctrl+Shift+X`).
-3. Search for **“Templates for Avalonia UI”** by **ADdy2142**.
+3. Search for **“Templates for Avalonia UI”** by **Adel Bakhshi**.
 4. Click **Install**.
 
 ✅ **Requirements**:
