@@ -1,5 +1,36 @@
 # Change Log
 
+## Version 3.0.0 - 2026-02-10
+
+### Compliance & Branding
+
+- **Renamed extension** from "Avalonia Templates" to **"Templates for Avalonia UI"** to comply with AvaloniaUI trademark guidelines.
+- **Updated all internal references** from "Avalonia Templates" to **"AV Templates"** in logs, commands, and user messages.
+- **Changed repository name** from `Avalonia-Templates-VS-Extenion` to `av-templates`.
+- **Added clear disclaimer** throughout the project indicating this is an **unofficial community extension**.
+
+### Package & Configuration Updates
+
+- **Updated `package.json`**:
+  - Changed `name` to `"av-templates"`.
+  - Updated `description` to clearly state unofficial status.
+  - Revised `keywords` and internal `category` names to avoid trademark implications.
+  - Changed configuration setting from `avaloniaTemplates.logLevel` to **`avt.logLevel`**.
+- **Removed unauthorized logo** and branding elements.
+
+### Technical Refactoring
+
+- **Updated all command IDs** to use `av-templates.*` prefix.
+- **Renamed output channel** from "Avalonia Templates" to **"AV Templates"**.
+- **Updated code documentation** to reflect new naming conventions.
+- **Fixed repository URLs** in all documentation files.
+
+### Notes
+
+- **All existing functionality remains unchanged** for end users.
+- This update resolves the trademark policy issue identified in GitHub #2.
+- The extension is now fully compliant with AvaloniaUI's trademark guidelines while maintaining all original features.
+
 ## Version 2.0.1 - 2025-09-12
 
 ### Bug Fixes
